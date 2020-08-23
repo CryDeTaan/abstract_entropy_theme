@@ -4,18 +4,29 @@ You need to enable the members feature first.
 --}}
 
 <div class="l-subscribe-section__form">
-    <form class="contact-form" action="https://formspree.io/xoqkzkyz" method="post">
+    <form id="contactForm" class="contact-form"
+          method="post">
         <label for="full-name">Name</label>
-        <input type="text" name="name" id="full-name" placeholder="How can I address you?" required>
+        <input type="text" name="from_name" id="full-name" placeholder="How can I address you?" required>
         <label for="email-address">Email Address</label>
-        <input type="email" name="_replyto" id="email-address" placeholder="Your email address" required>
+        <input type="email" name="from_email" id="email-address" placeholder="Your email address" required>
         <label for="message">Message</label>
         <textarea rows="5" name="message" id="message" placeholder="Your message" required></textarea>
-        <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
-        <input type="hidden" name="_next" value="{{@site.url}}//thanks/"/>
-        <button class="m-button primary block" type="submit">{{t "Send"}}</button>
+        <button class="m-button primary block" type="submit" onclick="sendMessage(event);">{{t "Send"}}</button>
     </form>
 </div>
+<script>
+    function sendMessage(e) {
+        e.preventDefault();
+        emailjs.sendForm('abstract_entropy', 'abstract_entropy', '#contactForm')
+                .then(function(response) {
+                    document.getElementById("success").style.display = 'block';
+                    document.getElementById("contactFormDiv").style.display = 'none';
+                }, function(error) {
+                    alert("Sorry, failed to send Message. Please try again later.")
+                });
+    }
+</script>
 <style>
     .contact-form {
         display: grid;
