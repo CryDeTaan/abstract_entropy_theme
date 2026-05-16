@@ -29,8 +29,8 @@
   "license": "ISC",
   "devDependencies": {
     "7zip": "0.0.6",
-    "@tryghost/admin-api": "^1.0.1",
-    "browser-sync": "^2.26.7",
+    "@tryghost/admin-api": "^1.14.9",
+    "browser-sync": "^3.0.4",
     "browser-sync-webpack-plugin": "^2.0.1",
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
